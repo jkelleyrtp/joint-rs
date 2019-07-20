@@ -1,0 +1,70 @@
+
+
+body {
+  margin: 0;
+  /* overflow: hidden; */
+ }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 8vw auto 30px;
+  grid-template-areas: "header header" "sidebar primaryviewport" "footer footer";
+  /* grid-gap: 0px; */
+  height: 100vh;
+
+}
+
+
+.footer {
+  grid-area: footer;
+  background: red;
+}
+
+.sidebar {
+  grid-area: sidebar; 
+  display: grid;  
+  grid-template-rows: 80px auto;
+	height: calc(92vh - 90px);
+}
+
+.panel-body {
+  overflow: auto;
+}
+  
+.primaryviewport {
+  grid-area: primaryviewport; 
+  background: lavender;
+
+}
+
+.header {
+  grid-area: header; 
+
+}
+  
+
+
+  
+  .card_items {
+    -webkit-user-drag: element;
+    user-select: none;
+    background: lightgray;
+
+    
+  }
+  
+  .sidebartitle {
+    user-select: none;
+
+  }
+  
+  .canvasdroparea {
+    width: 100%;
+    height: 100%;
+    color: lavender;
+
+}
+
+
+  /* html { height: 100%; } */

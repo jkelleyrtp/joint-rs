@@ -1,0 +1,14 @@
+[package]
+name = "joint_rs"
+version = "0.1.0"
+authors = ["Jonathan Kelley <jkelleyrtp@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+yew = "0.6.0"
+euclid = "0.19.9"
+
+[dev-dependencies]
+wasm-bindgen-test = "0.2.47"
+
+
