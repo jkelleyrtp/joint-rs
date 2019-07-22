@@ -4,14 +4,15 @@ extern crate joint_rs;
 use joint_rs::elements::menus::SidebarModel;
 use joint_rs::elements::canvas::Workspace as JointrsWorkspace;
 
+mod notionelement;
+use notionelement::NotionElement;
 
 
 pub struct JointrsDemo {
 }
 
 pub enum Msg {
-    AddItem,
-    MouseWheel,
+
 }
 
 impl Component for JointrsDemo {
@@ -22,19 +23,10 @@ impl Component for JointrsDemo {
         Self {
         }
     }
-
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
-        match msg {
-            Msg::AddItem => {
-                ConsoleService::new().log("Scrolling enter");
-            },
-            Msg::MouseWheel => {
-                ConsoleService::new().log("MOUSEWHEEL");
-            },
-        };
+        match msg {};
         false
     }
-
     fn change(&mut self, _: Self::Properties) -> ShouldRender {
         false
     }
@@ -57,12 +49,9 @@ impl Renderable<JointrsDemo> for JointrsDemo {
 
             <JointrsWorkspace: />
 
-            <div class="header", >
+            <div class="header", > </div>
             
-            </div>
-
-              <div class="footer",></div>
-
+            <div class="footer",> </div>
         </div>            
         }
     }
@@ -72,17 +61,9 @@ impl Renderable<JointrsDemo> for JointrsDemo {
 
 
 
+
+
 fn main() {
-    // yew::initialize();
-    // yew::App::new();
-
-
-
-    // App::<joint_rs::elements::canvas::Canvas>::new().mount_to_body();
-    // yew::run_loop();
-
-
-    // yew::start_app::<joint_rs::elements::menus::SidebarModel>()
     yew::start_app::<JointrsDemo>()
 }
 

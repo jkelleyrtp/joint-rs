@@ -1,26 +1,3 @@
-use joint_rs :: {
-    core::JointApp,
-    elements::jointelement::DefaultJointElement,
-    elements,
-    core
-};
-
-
-
-
-
-// fn main() {
-
-//     // let mut jointapp = core::DefaultJointApp::new();
-
-//     // let sidebar = elements::
-
-//     // let mut renderer = 
-
-//     // let mut jointapp = JointApp::<MyJointElement>::new();
-
-// }
-
 use undo::{Command, Record};
 
 struct Add(char);

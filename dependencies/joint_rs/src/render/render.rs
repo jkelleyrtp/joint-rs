@@ -1,4 +1,0 @@
-struct RenderController{
-    canvas: Canvas,
-}
-
