@@ -5,6 +5,6 @@ use yew::{html, Component, ComponentLink, Html, Renderable, ShouldRender};
 
 pub mod canvas;
 pub mod connectors;
-pub mod element;
+pub mod canvaselement;
 pub mod menus;
 pub mod test;

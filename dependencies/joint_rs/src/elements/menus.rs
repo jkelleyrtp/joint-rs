@@ -1,29 +1,5 @@
-#![recursion_limit="512"]
-
-// use serde_derive::{Deserialize, Serialize};
-// use strum::IntoEnumIteratr;
-// use strum_macros::{EnumIter, ToString};
 use yew::{html, Callback, Component, ComponentLink, Href, Html, Renderable, ShouldRender};
 use yew::services::ConsoleService;
-// use yew::events::IKeyboardEvent;
-// use yew::format::Json;
-// use yew::services::storage::{StorageService, Area};
-
-// struct Menu {
-
- 
-// }
-
-
-
-// struct MenuItem {
-//     css_class: &str,
-//     css_id: &str,
-    
-// }
-
-
-
 
 
 // ====================== //
@@ -42,8 +18,6 @@ pub enum Msg {
     AddItem,
     Startdrag,
     Enddrag,
-    // ItemDragging(usize)
-    ItemDragging
 }
 
 #[derive(PartialEq, Clone)]
@@ -85,12 +59,6 @@ impl Component for SidebarModel {
                 };
                 self.state.entries.push(entry);
                 self.state.console.log("Added item");
-
-            },
-
-            Msg::ItemDragging => {
-                self.state.console.log("Drag started!");
-
             },
 
             Msg::Startdrag => {
@@ -99,8 +67,6 @@ impl Component for SidebarModel {
 
             Msg::Enddrag => {
                 self.state.console.log("Drag stopped");
-
-
             }
 
         }
@@ -110,16 +76,7 @@ impl Component for SidebarModel {
 
 impl Renderable<SidebarModel> for SidebarModel {
     fn view(&self) -> Html<Self> {
-
-
-
-
-
-
         html! {
-
-
-
             <>
                 <div class="panel-header", >
                     <button onclick=|_| Msg::AddItem, > { "add item to list" } </button>
@@ -149,14 +106,11 @@ pub struct SidebarListItem {
 pub fn view_entry((idx, entry): (usize, &SidebarListItem)) -> Html<SidebarModel> {
 
     html! {
-        <li class="card_items" , >
-            <div class="view",> 
-                <p ondragstart=|_| Msg::Startdrag, >
+        <li class="card_items" ,ondragstart=|_| Msg::Startdrag,ondragend=|_| Msg::Enddrag, >
+            <div class="view",  > 
+                <p >
                     {"Nothing for you !"}
                 </p>
-                // <input class="toggle" type="checkbox" checked=entry.completed onclick=|_| Msg::Toggle(idx) />
-                // <label ondoubleclick=|_| Msg::ToggleEdit(idx)>{ &entry.description }</label>
-                // <button class="destroy" onclick=|_| Msg::Remove(idx) />
             </div>
         </li>
     }
