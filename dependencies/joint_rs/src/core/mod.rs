@@ -4,25 +4,18 @@ use yew::{
     Component
 };
 
-use undo::{Command, Record};
-
 use std::collections::HashMap;
+use std::rc::Rc;
 use crate::elements::JointElement;
 use crate::elements::jointelement::DefaultJointElement;
 
+pub mod commands;
+pub mod core;
 
 
-pub struct JointAppCore<R> {
-    command_record: Record< Command<R>>,
-}
 
-impl<R> JointAppCore<R> {
-    fn new() -> Self {
-        Self {
-            command_record: Record::default(),
-        }
-    }
-}
+
+
 
 
 
@@ -34,24 +27,22 @@ pub trait JointApp {
     type interactions: 'static;
 
 
-
-
-    /// Handle anything with the spceific focus on rolling back commands
-    fn handle_interactions(&mut self, interaction: Self::interactions);
+    // /// Handle anything with the spceific focus on rolling back commands
+    // fn handle_interactions(&mut self, interaction: Self::interactions);
 
     /// Get the list of elemenents
-    fn get_mut_element_list(&mut self) -> &mut HashMap<String, Self::element>;
+    fn get_mut_element_list(&mut self) -> &HashMap<String, Rc<Self::element>>;
 
-    /// Add an element 
-    fn add_element(&mut self, element: Self::element) {
-        let key = element.get_element_id(); 
-        self.get_mut_element_list().insert(key, element);
-    }
+    // /// Add an element 
+    // fn add_element(&mut self, element: Self::element) {
+    //     let key = element.get_element_id(); 
+    //     self.get_mut_element_list().insert(key, element);
+    // }
 
-    /// Remove elements from the entire scope 
-    fn remove_element(&mut self, key: &String) -> Option<Self::element> {
-        self.get_mut_element_list().remove(key)
-    }
+    // /// Remove elements from the entire scope 
+    // fn remove_element(&mut self, key: &String) -> Option<Self::element> {
+    //     self.get_mut_element_list().remove(key)
+    // }
 
 
 }
@@ -87,24 +78,24 @@ pub enum Interactions {
 }
 
 
-impl JointApp for DefaultJointApp {
-    type element = DefaultJointElement;
-    type interactions = Interactions;
+// impl JointApp for DefaultJointApp {
+//     type element = DefaultJointElement;
+//     type interactions = Interactions;
 
-    /// Handle interacitons
-    fn handle_interactions(&mut self, interaction: Self::interactions) {
-        match interaction {
-            Interactions::AddElement => {
+//     /// Handle interacitons
+//     // fn handle_interactions(&mut self, interaction: Self::interactions) {
+//     //     match interaction {
+//     //         Interactions::AddElement => {
 
-            },
-        };
+//     //         },
+//     //     };
 
-    }
+//     // }
 
 
-    /// Need to provide the trait some way to access the hashamp
-    fn get_mut_element_list(&mut self) -> &mut HashMap<String, Self::element> {
-        &mut self.elements
-    }
+//     /// Need to provide the trait some way to access the hashamp
+//     fn get_mut_element_list(&mut self) -> &HashMap<String, Rc<Self::element>> {
+//         &mut self.elements
+//     }
 
-}
+// }

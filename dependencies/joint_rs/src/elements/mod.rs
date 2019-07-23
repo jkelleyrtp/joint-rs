@@ -25,6 +25,7 @@ pub trait JointElement: Sized {
     fn on_element_add(&self) {}
 
     fn on_element_modified(&self) {}
+
 }
 
 

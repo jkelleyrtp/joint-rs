@@ -10,7 +10,7 @@ euclid = "0.19.9"
 undo = "0.35"
 
 
-[dev-dependencies]
-wasm-bindgen-test = "0.2.47"
+# [dev-dependencies]
+# wasm-bindgen-test = "0.2.47"
 
 
