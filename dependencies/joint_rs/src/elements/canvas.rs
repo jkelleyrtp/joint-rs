@@ -79,8 +79,8 @@ impl Renderable<Workspace> for Workspace {
                 ondragend= |_| Msg::DragEnd,
             >                
 
-                <div class="canvasdroparea",
-                    ondragenter=|_| Msg::Click,>
+                <div class="canvasdroparea"
+                    ondragenter=|_| Msg::Click>
 
                 </div>
 

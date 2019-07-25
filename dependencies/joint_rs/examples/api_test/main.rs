@@ -75,39 +75,23 @@ fn main()  {
 
     // let mut appcore = core::JointAppCore::<my_joint_element>::new();
 
-    let this_joint_app = my_joint_app::new();
+    let mut this_joint_app = my_joint_app::new();
     this_joint_app.handle_interaction(
         interactions::AddElement(
             my_joint_element::new("Element1".into())
         )
     );
 
-    println!("\nElements on canvas: ");
-    for (key, value) in appcore.get_elements().iter() {
-        print!("Key: {:?} , ", key.clone(),);
-        print!("Value: {:?} |  ", value.get_element_id(),);
-    }
 
-    appcore.command_record.undo().unwrap().expect("Couldn't undo");
-    println!("\nElements on canvas: ");
-    for (key, value) in appcore.get_elements().iter() {
-        print!("Key: {:?} , ", key.clone(),);
-        print!("Value: {:?} |  ", value.get_element_id(),);
-    }
 
-    appcore.command_record.undo().unwrap().expect("Couldn't undo");
-    println!("\nElements on canvas: ");
-    for (key, value) in appcore.get_elements().iter() {
-        print!("Key: {:?} , ", key.clone(),);
-        print!("Value: {:?} |  ", value.get_element_id(),);
-    }
 
-    appcore.command_record.undo().unwrap().expect("Couldn't undo");
-    println!("\nElements on canvas: ");
-    for (key, value) in appcore.get_elements().iter() {
-        print!("Key: {:?} , ", key.clone(),);
-        print!("Value: {:?} |  ", value.get_element_id(),);
-    }
+
+    // println!("\nElements on canvas: ");
+    // for (key, value) in appcore.get_elements().iter() {
+    //     print!("Key: {:?} , ", key.clone(),);
+    //     print!("Value: {:?} |  ", value.get_element_id(),);
+    // }
+
 
 
     // let mut record = Record::default();

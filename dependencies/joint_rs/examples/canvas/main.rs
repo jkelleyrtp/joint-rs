@@ -1,53 +1,39 @@
-// use yew::prelude::*;
-use yew::{html, Component, ComponentLink, Href, Html, Renderable, ShouldRender, services::ConsoleService,};
-extern crate joint_rs;
-use joint_rs::elements::menus::SidebarModel;
-use joint_rs::elements::canvas::Workspace as JointrsWorkspace;
+/// Import our functionality from the supporting files
+mod elements;
+mod renderer;
+mod app;
+mod context;
 
-mod notionelement;
-use notionelement::NotionElement;
-
-
-pub struct JointrsDemo {
-}
-
-pub enum Msg {
-
-}
-
-impl Component for JointrsDemo {
-    type Message = Msg;
-    type Properties = ();
-
-    fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
-        Self {
-        }
+use {
+    joint_rs,
+    elements :: {
+        graphelement::NotionElement
+    },
+    renderer :: {
+    },
+    app:: {
+        NotionApp
+    },
+    yew::{
+        Renderable,
+        Html,
+        html
     }
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
-        match msg {};
-        false
-    }
-    fn change(&mut self, _: Self::Properties) -> ShouldRender {
-        false
-    }
-}
+};
 
-impl Renderable<JointrsDemo> for JointrsDemo {
+/// Explicitly draw out how NotionApp will be rendered to the screen
+impl Renderable<NotionApp> for NotionApp {
     fn view(&self) -> Html<Self> {
         html! {
-            // <div class="custom-components-example", >
-            //     <TESTELEMENT: title="Middle" ,/>
-            // </div>        // <SidebarModel />
-
         <div class="grid-container", >
             
             <div class="sidebar", >
 
-                <SidebarModel: />
+                // <SidebarModel: />
                 
             </div>
 
-            <JointrsWorkspace: />
+            // <JointrsWorkspace: />
 
             <div class="header", > </div>
             
@@ -57,13 +43,12 @@ impl Renderable<JointrsDemo> for JointrsDemo {
     }
 }
 
-
-
-
-
-
-
 fn main() {
-    yew::start_app::<JointrsDemo>()
+    // Our NotionApp is using the NotionElement
+    let notion_app = NotionApp::new();
+
+    // let notion_app = DefaultApp::<MyElement>::new();
+
+    // yew::start_app::<JointrsDemo>()
 }
 

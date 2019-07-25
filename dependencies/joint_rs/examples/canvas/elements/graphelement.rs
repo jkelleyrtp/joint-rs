@@ -1,3 +1,5 @@
+use joint_rs::elements::JointElement;
+
 use yew :: {
     html, 
     Component, 
@@ -7,10 +9,23 @@ use yew :: {
     ShouldRender
 };
 
-use joint_rs::core::workspace::JointElement;
 
 pub struct NotionElement {
+    element_id: String
+}
 
+impl NotionElement {
+    fn new(id: String) -> Self {
+        Self {
+            element_id: id
+        }
+    }    
+}
+
+impl JointElement for NotionElement {
+    fn get_element_id(&self) -> String {
+        self.element_id.clone()
+    }
 }
 
 
@@ -21,7 +36,8 @@ impl Component for NotionElement {
 
     fn create(_: Self::Properties,  _: ComponentLink<Self> ) -> Self {
         Self {
-        }
+            element_id: "asdasd".to_string()
+        }        
     }
 
     fn update(&mut self, update_id: Updates) -> ShouldRender {
@@ -51,9 +67,9 @@ impl Renderable<NotionElement> for NotionElement {
 }
 
 
-impl JointElement for NotionElement {
-    fn get_element_id(&self) -> String {
-        "wasd".to_string()
-    }
+// impl JointElement for NotionElement {
+//     fn get_element_id(&self) -> String {
+//         "wasd".to_string()
+//     }
 
-}
+// }

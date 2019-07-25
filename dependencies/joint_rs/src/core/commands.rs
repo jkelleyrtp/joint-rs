@@ -1,7 +1,12 @@
-use undo::{Command, Record};
-use crate::core::core::JointAppState;
-use crate::elements::JointElement;
-use std::rc::Rc;
+use {
+    undo::{Command, Record},
+    std::rc::Rc,
+    crate:: {
+        core::core::JointAppState,
+        elements::JointElement,
+    }
+};
+
 
 
 
@@ -19,7 +24,6 @@ impl<GraphElement: JointElement> AddElementToGraph <GraphElement> {
         }
     }
 }
-
 
 impl<Element: JointElement> Command<JointAppState<Element>> for AddElementToGraph<Element> {
     fn apply(&mut self, s: &mut JointAppState<Element>) -> undo::Result {

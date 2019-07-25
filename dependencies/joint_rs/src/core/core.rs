@@ -1,16 +1,8 @@
-// use yew::{
-//     Html,
-//     Renderable,
-//     Component
-// };
 
 use undo::{Record};
-
 use std::collections::HashMap;
 use std::rc::Rc;
 use crate::elements::JointElement;
-// use crate::elements;
-// use crate::core::commands;
 
 
 /// The application state that gets managed by the command queue system

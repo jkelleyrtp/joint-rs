@@ -14,10 +14,10 @@ Much of joint_rs should just work out of the box from adding components to savin
 - Modify remote data from user interactivity
 - Render to html (wasm target)
 
-### Some niceties of joint_rs:
+## Some niceties of joint_rs:
 
 - undo-redo system
-- Solid Default components 
+- Solid Default components
 
 */
 
@@ -33,6 +33,8 @@ pub mod core;
 ///
 /// Provides a framework to assemble your elements that can be handled by the joint_app
 /// Also determines the layout of the elements in the workspace
+/// A renderer needs to output some sort of renderable *thing* (anything) and is only valid
+/// if it generates the rendered output from the JointApp 
 pub mod render;
 
 
