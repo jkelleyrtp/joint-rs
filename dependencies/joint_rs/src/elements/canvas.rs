@@ -9,22 +9,21 @@ use {
         ShouldRender,
         services::ConsoleService,
     },
-    crate::elements::canvaselement::CanvasElement,
+    crate::elements::JointElement,
 };
 
 
 
 
 // The state that holds all the user interaction
-pub struct Workspace {
-    elements: Vec<CanvasElement>,
+pub struct Workspace<T: JointElement> {
+    elements: Vec<T>,
     user_scrolling: bool,
     shift_down: bool,
 }
 
-
-impl Workspace {
-    pub fn new(CANVAS_HEIGHT: f32, CANVAS_WIDTH: f32) -> Workspace {
+impl<T: JointElement> Workspace<T> {
+    pub fn new(CANVAS_HEIGHT: f32, CANVAS_WIDTH: f32) -> Workspace<T> {
         // Create the canvas
         Workspace {
             elements: Vec::new(),
@@ -35,8 +34,8 @@ impl Workspace {
 }
 
 
-impl Component for Workspace {
-    type Message = Msg;
+impl<T> Component for Workspace<T> where T: JointElement+'static {
+    type Message = OtherMsg;
     type Properties = ();
 
     fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
@@ -45,12 +44,12 @@ impl Component for Workspace {
 
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
         match msg {
-            Msg::Click => {
-                ConsoleService::new().log("Drag enter");
-            },
-            Msg::DragEnd => {
-                ConsoleService::new().log("Drag ended");
-            }
+            // Msg::Click => {
+            //     ConsoleService::new().log("Drag enter");
+            // },
+            // Msg::DragEnd => {
+            //     ConsoleService::new().log("Drag ended");
+            // }
             _ => {
                 ConsoleService::new().log("Action not implemented");
             }
@@ -60,7 +59,7 @@ impl Component for Workspace {
 }
 
 
-pub enum Msg {
+pub enum OtherMsg {
     Click,
     Scroll,
     MouseWheel,
@@ -69,22 +68,24 @@ pub enum Msg {
 }
 
 
-impl Renderable<Workspace> for Workspace {
+impl<T> Renderable<Workspace<T>> for Workspace<T> where T: JointElement+'static, Self: Component<Message=OtherMsg>, {
+
     fn view(&self) -> Html<Self> {
+        // let Message = OtherMsg.clone();
+        // let additem = OtherMsg::AddItem;
         html! {
 
-            <div class="primaryviewport", 
-                onscroll = |_| Msg::AddItem, 
-                onmousewheel= |_| Msg::MouseWheel,
-                ondragend= |_| Msg::DragEnd,
-            >                
+            // <div class="primaryviewport", 
+            //     onscroll = |_| Message::AddItem, 
+            //     onmousewheel= |_| Message::MouseWheel,
+            //     ondragend= |_| Message::DragEnd,
+            // >                
 
-                <div class="canvasdroparea"
-                    ondragenter=|_| Msg::Click>
-
+                <div class="canvasdroparea",
+                    ondragenter=|_| OtherMsg::AddItem,>
                 </div>
 
-            </div>
+            // </div>
 
         }
     }

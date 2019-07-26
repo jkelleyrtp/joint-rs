@@ -7,7 +7,8 @@ mod context;
 use {
     joint_rs,
     elements :: {
-        graphelement::NotionElement
+        graphelement::NotionElement,
+        
     },
     renderer :: {
     },
@@ -45,10 +46,10 @@ impl Renderable<NotionApp> for NotionApp {
 
 fn main() {
     // Our NotionApp is using the NotionElement
-    let notion_app = NotionApp::new();
+    // let notion_app = NotionApp::new();
 
     // let notion_app = DefaultApp::<MyElement>::new();
 
-    // yew::start_app::<JointrsDemo>()
+    let notion_app = yew::start_app::<NotionApp>();
 }
 
