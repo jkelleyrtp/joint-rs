@@ -5,10 +5,12 @@ mod app;
 mod context;
 
 use {
-    joint_rs,
+    joint_rs :: {
+        elements::canvas::JointCanvas,
+        elements::menus::JointSidebar,
+    },
     elements :: {
         graphelement::NotionElement,
-        
     },
     renderer :: {
     },
@@ -30,11 +32,11 @@ impl Renderable<NotionApp> for NotionApp {
             
             <div class="sidebar", >
 
-                // <SidebarModel: />
+                <JointSidebar: />
                 
             </div>
 
-            // <JointrsWorkspace: />
+                <JointCanvas<NotionElement>: />
 
             <div class="header", > </div>
             

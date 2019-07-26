@@ -1,3 +1,5 @@
+#![recursion_limit="128"]
+
 /*!
 This crate provides a framework for building graph+diagramming based web-apps leveraging the yew component system.
 

@@ -12,7 +12,7 @@ pub struct JointAppState<Element: JointElement> {
 }
 
 impl<Element: JointElement> JointAppState<Element> {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self {
             title: "".to_string(),
             elements: HashMap::new()
@@ -44,7 +44,7 @@ impl<Element: JointElement> JointAppCore<Element> {
     }
 
     /// Currently not implemented loading yet
-    fn new_from_saved_state() -> Self {
+    pub fn new_from_saved_state() -> Self {
         let record = Record::<JointAppState<Element>>::default();
         Self {
             command_record: record, 

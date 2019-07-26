@@ -10,7 +10,7 @@ pub struct SidebarState {
     console: ConsoleService,
 }
 
-pub struct SidebarModel {
+pub struct JointSidebar {
     state: SidebarState
 }
 
@@ -35,7 +35,7 @@ impl Default for Props {
     }
 }
 
-impl Component for SidebarModel {
+impl Component for JointSidebar {
     type Message = Msg;
     type Properties = Props;
     fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
@@ -67,27 +67,28 @@ impl Component for SidebarModel {
 
             Msg::Enddrag => {
                 self.state.console.log("Drag stopped");
-            }
+            },
+            _ => ()
 
         }
         true
     }
 }
 
-impl Renderable<SidebarModel> for SidebarModel {
+impl Renderable<JointSidebar> for JointSidebar {
     fn view(&self) -> Html<Self> {
         html! {
             <>
-                <div class="panel-header", >
-                    <button onclick=|_| Msg::AddItem, > { "add item to list" } </button>
-                    <p class="sidebartitle",> { "Hello World" } </p>
+                <div class="panel-header">
+                    <button onclick=|_| Msg::AddItem > { "add item to list" } </button>
+                    <p class="sidebartitle"> { "Hello World" } </p>
                 </div>
 
-                <div class="panel-body",>
-                    <div class="list-group",>
+                <div class="panelbody">
+                    <div class="listgroup">
                         <ul class="todo-list",>
                             { for self.state.entries.iter().enumerate().map(view_entry) }
-                        </ul>
+                      </ul>
                     </div>
                 </div>
             </>
@@ -103,7 +104,7 @@ pub struct SidebarListItem {
 
 
 
-pub fn view_entry((idx, entry): (usize, &SidebarListItem)) -> Html<SidebarModel> {
+pub fn view_entry((idx, entry): (usize, &SidebarListItem)) -> Html<JointSidebar> {
 
     html! {
         <li class="card_items" ,ondragstart=|_| Msg::Startdrag,ondragend=|_| Msg::Enddrag, >
@@ -115,30 +116,3 @@ pub fn view_entry((idx, entry): (usize, &SidebarListItem)) -> Html<SidebarModel>
         </li>
     }
 }
-
-
-
-
-// impl Component for SidebarListItem {
-//     type Message =  Msg;
-//     type Properties = ();
-//     fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
-//         Self {
-//             title: "hlelr;lej".to_string(),
-//         }
-//     }
-
-//     fn update(&mut self, msg: Self::Message) -> ShouldRender {
-//         match msg {
-//             Msg::DoIt => {
-
-//             }
-//         }
-//         true
-//     }
-// }
-
-
-
-
-

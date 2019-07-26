@@ -4,13 +4,8 @@
 // use yew::{html, Component, ComponentLink, Html, Renderable, ShouldRender};
 
 
-
-mod canvas;
-
-
-
-pub trait JointCanvas {
-}
+// pub trait JointCanvas {
+// }
 
 
 // Any menu button that you want to employ that interacts with the joint_app
@@ -37,3 +32,5 @@ pub trait JointElement: Sized {
 
 // All the default elements
 pub mod jointelement;
+pub mod canvas;
+pub mod menus;

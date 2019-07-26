@@ -15,17 +15,17 @@ use {
 
 
 
-// The state that holds all the user interaction
-pub struct Workspace<T: JointElement> {
+/// Primary element for holding JointElements
+pub struct JointCanvas<T: JointElement> {
     elements: Vec<T>,
     user_scrolling: bool,
     shift_down: bool,
 }
 
-impl<T: JointElement> Workspace<T> {
-    pub fn new(CANVAS_HEIGHT: f32, CANVAS_WIDTH: f32) -> Workspace<T> {
+impl<T: JointElement> JointCanvas<T> {
+    pub fn new(CANVAS_HEIGHT: f32, CANVAS_WIDTH: f32) -> JointCanvas<T> {
         // Create the canvas
-        Workspace {
+        JointCanvas {
             elements: Vec::new(),
             user_scrolling: false,
             shift_down: false,
@@ -34,12 +34,12 @@ impl<T: JointElement> Workspace<T> {
 }
 
 
-impl<T> Component for Workspace<T> where T: JointElement+'static {
-    type Message = OtherMsg;
+impl<T> Component for JointCanvas<T> where T: JointElement+'static {
+    type Message = CanvasActions;
     type Properties = ();
 
     fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
-        Workspace::new(1000.0, 1000.0)
+        JointCanvas::new(1000.0, 1000.0)
     }
 
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
@@ -59,7 +59,7 @@ impl<T> Component for Workspace<T> where T: JointElement+'static {
 }
 
 
-pub enum OtherMsg {
+pub enum CanvasActions {
     Click,
     Scroll,
     MouseWheel,
@@ -68,24 +68,19 @@ pub enum OtherMsg {
 }
 
 
-impl<T> Renderable<Workspace<T>> for Workspace<T> where T: JointElement+'static, Self: Component<Message=OtherMsg>, {
-
+impl<T> Renderable<JointCanvas<T>> for JointCanvas<T> where T: JointElement+'static, Self: Component<Message=CanvasActions>, {
     fn view(&self) -> Html<Self> {
-        // let Message = OtherMsg.clone();
-        // let additem = OtherMsg::AddItem;
         html! {
 
-            // <div class="primaryviewport", 
-            //     onscroll = |_| Message::AddItem, 
-            //     onmousewheel= |_| Message::MouseWheel,
-            //     ondragend= |_| Message::DragEnd,
-            // >                
-
+            <div class="primaryviewport", 
+                onscroll = |_| CanvasActions::AddItem, 
+                onmousewheel= |_| CanvasActions::MouseWheel,
+                ondragend= |_| CanvasActions::DragEnd,
+            >                
                 <div class="canvasdroparea",
-                    ondragenter=|_| OtherMsg::AddItem,>
+                    ondragenter=|_| CanvasActions::AddItem,>
                 </div>
-
-            // </div>
+            </div>
 
         }
     }
