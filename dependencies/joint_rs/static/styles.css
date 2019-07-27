@@ -53,8 +53,7 @@ body {
   -webkit-user-drag: element;
   user-select: none;
   background: lightgray;
-
-  
+  list-style: none;
 }
 
 .sidebartitle {
@@ -63,8 +62,8 @@ body {
 }
 
 .canvasdroparea {
-  width: 200vw;
-  height: 200vw;
+  width: 150vw;
+  height: 150vh;
   color: lavender;
   display: grid;
   grid-template-areas: "left1 mid right1";

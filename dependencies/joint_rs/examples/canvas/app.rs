@@ -15,7 +15,6 @@ use {
     }
 };
 
-
 pub struct NotionApp {
     joint_core: JointAppCore<NotionElement>,
 }
@@ -35,9 +34,9 @@ impl NotionApp {
                         element.get_element_id(),
                         element
                     )
-                ).expect("Couldn't add element to graph");
+                ).expect("Couldn't add element to graph"); // need to handle this better
             },
-
+            _ => ()
         }
     }
 }
@@ -51,7 +50,12 @@ impl JointApp for NotionApp {
     }
 }
 
+type element_id = String;
+
 pub enum NotionAppInteractions {
-    AddElement(NotionElement)
+    AddElement(NotionElement),
+    SidebarDragging(element_id),
+    SidebarElementReleased(element_id),
+
 }
 

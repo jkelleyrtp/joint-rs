@@ -84,8 +84,8 @@ impl Renderable<JointSidebar> for JointSidebar {
                     <p class="sidebartitle"> { "Hello World" } </p>
                 </div>
 
-                <div class="panelbody">
-                    <div class="listgroup">
+                <div class="panel-body">
+                    <div class="list-group">
                         <ul class="todo-list",>
                             { for self.state.entries.iter().enumerate().map(view_entry) }
                       </ul>

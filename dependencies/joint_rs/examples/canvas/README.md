@@ -10,5 +10,14 @@ The app is:
 - [ ] Offline capable
 - [ ] Backend-api agnostic
 
-All right out-of-the-box.
+All right out of the box.
 
+
+
+
+---
+Structure of this project:
+
+- Extend the JointApp (all the functionality and interactivity) in ` app.rs `
+- Lay out the actual design of your app in ` renderer.rs `
+- Design variants of your JointElemnet using ` elements/graphelement.rs `

@@ -1,5 +1,9 @@
 use {
-    joint_rs::render::JointRenderer,
+    joint_rs::{
+        render::JointRenderer,
+        elements::canvas::JointCanvas,
+        elements::menus::JointSidebar,
+    },
     yew :: {
         html, 
         Component, 
@@ -8,8 +12,11 @@ use {
         Renderable, 
         ShouldRender
     },
-    crate::NotionApp,
-    crate::app::NotionAppInteractions
+    crate::{
+        NotionApp,
+        app::NotionAppInteractions,
+        elements::graphelement::NotionElement
+    }
 };
 
 
@@ -33,3 +40,24 @@ impl Component for NotionApp {
     }
 }
 
+/// Explicitly draw out how NotionApp will be rendered to the screen
+impl Renderable<NotionApp> for NotionApp {
+    fn view(&self) -> Html<Self> {
+        html! {
+        <div class="grid-container", >
+            
+            <div class="sidebar", >
+
+                <JointSidebar: />
+                
+            </div>
+
+                <JointCanvas<NotionElement>: />
+
+            <div class="header", > </div>
+            
+            <div class="footer",> </div>
+        </div>            
+        }
+    }
+}

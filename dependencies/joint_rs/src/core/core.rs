@@ -55,3 +55,15 @@ impl<Element: JointElement> JointAppCore<Element> {
         &self.command_record.as_receiver().elements
     }
 }
+
+
+
+
+    // pub fn add_element<T: JointElement> (&mut self, element: T) {
+    //     self.command_record.apply(
+    //         commands::AddElementToGraph::new(
+    //             element.get_element_id(),
+    //             element
+    //         )
+    //     ).expect("Couldn't add element to graph"); // need to handle this better
+    // }
