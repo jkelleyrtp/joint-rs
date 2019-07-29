@@ -58,9 +58,6 @@ impl Component for NotionApp {
 
 
 
-
-
-
 // #[derive(Serialize, Deserialize, Debug)]
 // pub enum Request {
 //     Question(String),

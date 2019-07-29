@@ -32,11 +32,12 @@ fn main() {
     // let renderer = NotionRenderer::new();
 
     // let notion_app = JointApp::<NotionElement, NotionRenderer>::new(renderer);
+    // yew::start_app::<NotionRenderer>();
 
     let my_app = App::<NotionApp>::new();
     my_app.mount_to_body();
     run_loop();
-    // yew::start_app::<NotionRenderer>();
+    
 }
 
 

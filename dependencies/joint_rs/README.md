@@ -1,8 +1,12 @@
 # Joint-rs 
 
-A rust-powered "batteries-included" framework for interacting with datagraphs in the browser, built with Yew and Rustux.
+A set of Yew elements designed to make implementing interactive network/graph visualizations easier in Rust.
 
 
+## Relies on:
+
+- Rustux for web-focused state managemenet with Yew hooks
+- Yew for graphical elements
 
 ## Goals of joint_rs:
 
@@ -12,12 +16,6 @@ A rust-powered "batteries-included" framework for interacting with datagraphs in
 - Load data from a remote backend
 - Modify remote data from user interactivity
 - Render to html (wasm target)
-
-## Some niceties of joint_rs:
-
-- undo-redo system
-- Solid Default components
-- Serializing (saving and loading) saved states
 
 ## Coming Up:
 

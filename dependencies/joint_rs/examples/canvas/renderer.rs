@@ -31,9 +31,8 @@ impl Renderable<NotionApp> for NotionApp {
             
             <div class="sidebar", >
 
-                // <JointSidebar: />
-                <AddElementButton: />
-                
+                <JointSidebar: />
+                // <AddElementButton: />
             </div>
 
                 < JointCanvas<NotionElement>: />
@@ -42,6 +41,18 @@ impl Renderable<NotionApp> for NotionApp {
             
             <div class="footer",> </div>
         </div>            
+        }
+    }
+}
+
+pub struct Fred {
+
+}
+
+impl Renderable<NotionApp> for Fred {
+    fn view(&self) -> Html<NotionApp>{
+        html! {
+
         }
     }
 }
