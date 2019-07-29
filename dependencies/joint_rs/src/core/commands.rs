@@ -2,7 +2,7 @@ use {
     undo::{Command, Record},
     std::rc::Rc,
     crate:: {
-        core::core::JointAppState,
+        core::JointAppState,
         elements::JointElement,
     }
 };

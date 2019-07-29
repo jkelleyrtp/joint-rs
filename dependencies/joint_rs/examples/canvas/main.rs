@@ -8,23 +8,36 @@ use {
     joint_rs :: {
         elements::canvas::JointCanvas,
         elements::menus::JointSidebar,
+        core::JointApp,
     },
     elements :: {
         graphelement::NotionElement,
     },
     renderer :: {
     },
-    app:: {
-        NotionApp
-    },
     yew::{
         Renderable,
         Html,
-        html
-    }
+        html,
+        App,
+        run_loop,
+    },
+    crate::{
+        app::NotionApp
+    },
 };
 
+
 fn main() {
-    let notion_app = yew::start_app::<NotionApp>();
+    // let renderer = NotionRenderer::new();
+
+    // let notion_app = JointApp::<NotionElement, NotionRenderer>::new(renderer);
+
+    let my_app = App::<NotionApp>::new();
+    my_app.mount_to_body();
+    run_loop();
+    // yew::start_app::<NotionRenderer>();
 }
+
+
 

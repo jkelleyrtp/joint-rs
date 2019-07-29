@@ -1,6 +1,6 @@
 use {
     joint_rs::{
-        render::JointRenderer,
+        core::renderer::JointRenderer,
         elements::canvas::JointCanvas,
         elements::menus::JointSidebar,
     },
@@ -13,32 +13,15 @@ use {
         ShouldRender
     },
     crate::{
-        NotionApp,
         app::NotionAppInteractions,
-        elements::graphelement::NotionElement
+        elements::{
+            graphelement::NotionElement,
+            add_element_button::AddElementButton
+        },
+        app::NotionApp
     }
 };
 
-
-impl Component for NotionApp {
-    type Message = NotionAppInteractions;
-    type Properties = ();
-
-    fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
-        Self::new()
-    }
-
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
-        match msg {
-            _ => ()
-        };
-        false
-    }
-
-    fn change(&mut self, _: Self::Properties) -> ShouldRender {
-        false
-    }
-}
 
 /// Explicitly draw out how NotionApp will be rendered to the screen
 impl Renderable<NotionApp> for NotionApp {
@@ -48,11 +31,12 @@ impl Renderable<NotionApp> for NotionApp {
             
             <div class="sidebar", >
 
-                <JointSidebar: />
+                // <JointSidebar: />
+                <AddElementButton: />
                 
             </div>
 
-                <JointCanvas<NotionElement>: />
+                < JointCanvas<NotionElement>: />
 
             <div class="header", > </div>
             

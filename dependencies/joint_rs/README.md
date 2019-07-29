@@ -1,6 +1,6 @@
 # Joint-rs 
 
-A rust-powered "batteries-included" framework for interacting with datagraphs in the browser.
+A rust-powered "batteries-included" framework for interacting with datagraphs in the browser, built with Yew and Rustux.
 
 
 
@@ -23,3 +23,6 @@ A rust-powered "batteries-included" framework for interacting with datagraphs in
 
 - WebSocket and WebRTC collaboration
 
+### NB
+
+Joint-rs provides a ` JointCore ` that handles 

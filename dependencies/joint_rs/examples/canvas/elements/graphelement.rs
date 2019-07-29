@@ -9,6 +9,9 @@ use yew :: {
     ShouldRender
 };
 
+use crate :: {
+    app::NotionAppInteractions as Updates
+};
 
 pub struct NotionElement {
     element_id: String
@@ -45,12 +48,12 @@ impl Component for NotionElement {
     }
 }
 
-pub enum Updates {
-    Remove,
-    EditTitle,
-    ChangeColor,
-    OpenInNotion
-}    
+// pub enum Updates {
+//     Remove,
+//     EditTitle,
+//     ChangeColor,
+//     OpenInNotion
+// }    
 
 
 impl Renderable<NotionElement> for NotionElement {

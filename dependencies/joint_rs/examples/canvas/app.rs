@@ -1,61 +1,100 @@
-// Some beautiful 2018 rust imports here
 use {
-    std :: {
-        collections::HashMap,
-        rc::Rc
+    joint_rs::{
+        elements::canvas::JointCanvas,
+        elements::menus::JointSidebar,
+        core::JointApp
     },
-    joint_rs :: {
-        core::JointApp,
-        elements::JointElement,
-        core::commands,
-        core::core::JointAppCore,
-    },
-    crate :: {
-        elements::graphelement::NotionElement,
+    yew :: { html, Component, ComponentLink, Html, Renderable, ShouldRender,
+            services::ConsoleService},
+    yew::worker::*,
+    serde_derive::*,
+    crate::{
+        elements::graphelement::NotionElement
     }
 };
 
 pub struct NotionApp {
-    joint_core: JointAppCore<NotionElement>,
+    joint_core: JointApp<NotionElement>,
+    link: ComponentLink<NotionApp>
 }
 
-impl NotionApp {
-    pub fn new() -> Self {
-        Self {
-            joint_core: JointAppCore::<NotionElement>::new(),
-        }
-    }
-
-    pub fn handle_interaction(&mut self, interaction: NotionAppInteractions) {
-        match interaction {
-            NotionAppInteractions::AddElement(element) => {
-                self.joint_core.command_record.apply(
-                    commands::AddElementToGraph::new(
-                        element.get_element_id(),
-                        element
-                    )
-                ).expect("Couldn't add element to graph"); // need to handle this better
-            },
-            _ => ()
-        }
-    }
-}
-
-impl JointApp for NotionApp {
-    type element = NotionElement;
-    type interactions = NotionAppInteractions;
-
-    fn get_mut_element_list(&mut self) -> &HashMap<String, Rc<Self::element>> {
-        self.joint_core.get_elements()
-    }
-}
-
-type element_id = String;
 
 pub enum NotionAppInteractions {
-    AddElement(NotionElement),
-    SidebarDragging(element_id),
-    SidebarElementReleased(element_id),
-
+    DragElement,
+    OpenInNotion
 }
 
+impl Component for NotionApp {
+    type Message = NotionAppInteractions;
+    type Properties = ();
+
+    /// Default back to the standard new function
+    fn create(_: Self::Properties, parent: ComponentLink<Self>) -> Self { 
+        Self {
+            joint_core: JointApp::<NotionElement>::new(),
+            link: parent
+        }
+    }
+
+    // Start wiring our app together
+    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+        match msg {
+            NotionAppInteractions::OpenInNotion => {
+                ConsoleService::new().log("Button pressed!");
+            },
+            _ => ()
+        };
+        false
+    }
+
+    fn change(&mut self, _: Self::Properties) -> ShouldRender { false }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// #[derive(Serialize, Deserialize, Debug)]
+// pub enum Request {
+//     Question(String),
+// }
+
+// #[derive(Serialize, Deserialize, Debug)]
+// pub enum Response {
+//     Answer(String),
+// }
+
+// impl Agent for NotionApp {
+//     // Available:
+//     // - `Job` (one per bridge)
+//     // - `Context` (shared in the same thread)
+//     // - `Public` (separate thread).
+//     type Reach = Context; // Spawn only one instance per thread (all components could reach this)
+//     type Message = NotionAppInteractions;
+//     type Input = Request;
+//     type Output = Response;
+
+//     // Create an instance with a link to agent's environment.
+//     fn create(link: AgentLink<Self>) -> Self {
+//         NotionApp::new()
+//     }
+
+//     // Handle inner messages (of services of `send_back` callbacks)
+//     fn update(&mut self, msg: Self::Message) { /* ... */ }
+
+//     // Handle incoming messages from components of other agents.
+//     fn handle(&mut self, msg: Self::Input, who: HandlerId) {
+//         match msg {
+//             Request::Question(_) => {
+//                 self.link.response(who, Response::Answer("That's cool!".into()));
+//             },
+//         }
+//     }
+// }

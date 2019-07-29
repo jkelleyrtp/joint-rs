@@ -31,13 +31,12 @@ pub mod core;
 
 
 
-/// Converts your state and associated elements into the final html rendered to the screen
-///
-/// Provides a framework to assemble your elements that can be handled by the joint_app
-/// Also determines the layout of the elements in the workspace
-/// A renderer needs to output some sort of renderable *thing* (anything) and is only valid
-/// if it generates the rendered output from the JointApp 
-pub mod render;
+// /// Converts your state and associated elements into the final html rendered to the screen
+// ///
+// /// Provides a framework to assemble your elements that can be handled by the joint_app
+// /// Also determines the layout of the elements in the workspace
+// /// A renderer needs to output some sort of renderable *thing* (anything) and is only valid if it generates the rendered output from the JointApp 
+// pub mod render;
 
 
 
@@ -47,3 +46,4 @@ pub mod render;
 /// If you want to override the defaults, just design your own yew component
 /// and make sure it satisfies the relevant traits for each element type.
 pub mod elements;
+
