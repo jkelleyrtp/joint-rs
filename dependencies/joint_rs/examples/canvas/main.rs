@@ -1,3 +1,4 @@
+#![recursion_limit="256"]
 /// Import our functionality from the supporting files
 mod elements;
 mod renderer;

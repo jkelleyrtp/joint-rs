@@ -1,3 +1,5 @@
+#![recursion_limit="128"]
+
 use joint_rs::elements::JointElement;
 
 use yew :: {

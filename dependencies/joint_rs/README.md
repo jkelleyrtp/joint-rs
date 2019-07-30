@@ -21,6 +21,5 @@ A set of Yew elements designed to make implementing interactive network/graph vi
 
 - WebSocket and WebRTC collaboration
 
-### NB
+### 
 
-Joint-rs provides a ` JointCore ` that handles 

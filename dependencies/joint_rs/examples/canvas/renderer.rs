@@ -1,3 +1,5 @@
+#![recursion_limit="256"]
+
 use {
     joint_rs::{
         core::renderer::JointRenderer,
@@ -31,8 +33,27 @@ impl Renderable<NotionApp> for NotionApp {
             
             <div class="sidebar", >
 
-                <JointSidebar: />
+                // <JointSidebar: />
                 // <AddElementButton: />
+                { Renderable::view( &Fred { val: 5 } ) }
+                { Renderable::view( &Fred { val: 4 } ) }
+                { Renderable::view( &Fred { val: 3 } ) }
+                { Renderable::view( &Fred { val: 2 } ) }
+                { Renderable::view( &Fred { val: 1 } ) }
+                { Renderable::view( &Fred { val: 0 } ) }
+                { Renderable::view( &Fred { val: 1 } ) }
+                { Renderable::view( &Fred { val: 2 } ) }
+                { Renderable::view( &Fred { val: 3 } ) }
+                { Renderable::view( &Fred { val: 5 } ) }
+                { Renderable::view( &Fred { val: 5 } ) }
+                { Renderable::view( &Fred { val: 5 } ) }
+                { Renderable::view( &Fred { val: 5 } ) }
+                { Renderable::view( &Fred { val: 5 } ) }
+                { Renderable::view( &Fred { val: 5 } ) }
+                { Renderable::view( &Fred { val: 5 } ) }
+                { Renderable::view( &Fred { val: 5 } ) }
+
+
             </div>
 
                 < JointCanvas<NotionElement>: />
@@ -46,13 +67,15 @@ impl Renderable<NotionApp> for NotionApp {
 }
 
 pub struct Fred {
-
+    val: i32
 }
 
 impl Renderable<NotionApp> for Fred {
     fn view(&self) -> Html<NotionApp>{
         html! {
-
+            <div> 
+                {format!("Hello! My value is: {:?}", self.val) }
+            </div>
         }
     }
 }

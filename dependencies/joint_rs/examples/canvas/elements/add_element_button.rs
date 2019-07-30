@@ -1,3 +1,5 @@
+#![recursion_limit="128"]
+
 use yew :: { html, Component, ComponentLink, Html, Renderable, ShouldRender };
 use crate::app::NotionAppInteractions as NotionUpdates;
 
