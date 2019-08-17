@@ -21,5 +21,6 @@ A set of Yew elements designed to make implementing interactive network/graph vi
 
 - WebSocket and WebRTC collaboration
 
-### 
+<!-- ### Structure
+Each element has its own "API" backed by Rustux. Traditional functionality of Yew remains, with the option of logging some actions in the store which is retained with Global and Local service worker. -->
 

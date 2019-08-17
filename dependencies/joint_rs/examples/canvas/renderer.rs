@@ -32,31 +32,11 @@ impl Renderable<NotionApp> for NotionApp {
         <div class="grid-container", >
             
             <div class="sidebar", >
-
-                // <JointSidebar: />
-                // <AddElementButton: />
-                { Renderable::view( &Fred { val: 5 } ) }
-                { Renderable::view( &Fred { val: 4 } ) }
-                { Renderable::view( &Fred { val: 3 } ) }
-                { Renderable::view( &Fred { val: 2 } ) }
-                { Renderable::view( &Fred { val: 1 } ) }
-                { Renderable::view( &Fred { val: 0 } ) }
-                { Renderable::view( &Fred { val: 1 } ) }
-                { Renderable::view( &Fred { val: 2 } ) }
-                { Renderable::view( &Fred { val: 3 } ) }
-                { Renderable::view( &Fred { val: 5 } ) }
-                { Renderable::view( &Fred { val: 5 } ) }
-                { Renderable::view( &Fred { val: 5 } ) }
-                { Renderable::view( &Fred { val: 5 } ) }
-                { Renderable::view( &Fred { val: 5 } ) }
-                { Renderable::view( &Fred { val: 5 } ) }
-                { Renderable::view( &Fred { val: 5 } ) }
-                { Renderable::view( &Fred { val: 5 } ) }
-
+                
 
             </div>
 
-                < JointCanvas<NotionElement>: />
+                < JointCanvas<NotionElement>:   />
 
             <div class="header", > </div>
             
